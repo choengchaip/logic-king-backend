@@ -1,0 +1,26 @@
+version: "3.9"
+services:
+  db:
+    image: mongo:4.4.6-bionic
+    container_name: db
+    restart: always
+    ports:
+      - 27017:27017
+    volumes:
+      - .storage/mongo:/data/db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: logicking
+      MONGO_INITDB_ROOT_PASSWORD: 12345678
+
+#  api:
+#    build:
+#      context: .
+#      dockerfile: ./Dockerfile
+#    container_name: api
+#    restart: always
+#    volumes:
+#      - .:/app
+networks:
+  default:
+    external:
+      name: logicking
